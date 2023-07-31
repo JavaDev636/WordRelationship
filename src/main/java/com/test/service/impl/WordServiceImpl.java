@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.test.dto.WordDto;
 import com.test.entity.Word;
+import com.test.exception.RelationAlreadyExistException;
 import com.test.repository.WordRepository;
 import com.test.service.WordService;
 
@@ -23,6 +24,10 @@ public class WordServiceImpl implements WordService{
 
 	@Override
 	public WordDto saveWord(WordDto wordDto) {
+		Word existedWord = wordRepository.findByWord1AndWord2(wordDto.getWord1(), wordDto.getWord2());
+		System.out.println(existedWord);
+		if(existedWord != null)
+			throw new RelationAlreadyExistException();
 		Word word = modelMapper.map(wordDto, Word.class);
 		Word savedWord = wordRepository.save(word);
 		WordDto savedWordDto = modelMapper.map(savedWord, WordDto.class);

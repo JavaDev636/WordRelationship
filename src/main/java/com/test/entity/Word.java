@@ -11,6 +11,7 @@ public class Word {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private String word1;
 	private String word2;
 	private String relation;

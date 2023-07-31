@@ -1,5 +1,7 @@
 package com.test.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class WordDto {
 
 	private Long id;
@@ -17,6 +19,7 @@ public class WordDto {
 		return word1;
 	}
 	public void setWord1(String word1) {
+		
 		this.word1 = word1;
 	}
 	public String getWord2() {
