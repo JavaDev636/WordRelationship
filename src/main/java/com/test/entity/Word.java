@@ -25,13 +25,13 @@ public class Word {
 		return word1;
 	}
 	public void setWord1(String word1) {
-		this.word1 = word1;
+		this.word1 = word1.toLowerCase().trim();
 	}
 	public String getWord2() {
 		return word2;
 	}
 	public void setWord2(String word2) {
-		this.word2 = word2;
+		this.word2 = word2.toLowerCase().trim();
 	}
 	public String getRelation() {
 		return relation;
