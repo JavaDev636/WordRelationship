@@ -1,5 +1,8 @@
 package com.test.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,13 @@ public class WordServiceImpl implements WordService{
 		Word savedWord = wordRepository.save(word);
 		WordDto savedWordDto = modelMapper.map(savedWord, WordDto.class);
 		return savedWordDto;
+	}
+
+	@Override
+	public List<WordDto> getWords() {
+		List<Word> words = wordRepository.findAll();
+	        List<WordDto> wordDtos = words.stream().map(word -> modelMapper.map(word, WordDto.class)).collect(Collectors.toList());
+	        return wordDtos;
 	}
 	
 	
