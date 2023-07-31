@@ -35,6 +35,13 @@ public class WordServiceImpl implements WordService{
 	        List<WordDto> wordDtos = words.stream().map(word -> modelMapper.map(word, WordDto.class)).collect(Collectors.toList());
 	        return wordDtos;
 	}
+
+	@Override
+	public List<WordDto> getWords(String relation) {
+		List<Word> words = wordRepository.findAllByRelation(relation);
+        List<WordDto> wordDtos = words.stream().map(word -> modelMapper.map(word, WordDto.class)).collect(Collectors.toList());
+        return wordDtos;
+	}
 	
 	
 }

@@ -9,4 +9,5 @@ public interface WordService {
 	WordDto saveWord(WordDto wordDto);
 	
 	List<WordDto> getWords();
+	List<WordDto> getWords(String relation);
 }

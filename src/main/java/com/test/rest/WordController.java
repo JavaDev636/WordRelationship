@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.test.dto.WordDto;
@@ -28,7 +29,12 @@ public class WordController {
 	}
 	
 	@GetMapping()
-	public ResponseEntity<Object>  getWords(){
+	public ResponseEntity<Object>  getWords(@RequestParam(required = false) String relation){
+		if(relation != null)
+			return ResponseHandler.generateResponse("Success", HttpStatus.OK, wordService.getWords(relation));
 		return ResponseHandler.generateResponse("Success", HttpStatus.OK, wordService.getWords());
+		
 	}
+	
+	
 }
